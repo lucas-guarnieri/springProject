@@ -5,14 +5,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tweteroo.api.dto.UserDTO;
+import com.tweteroo.api.dto.TweetDTO;
 
 @RestController
-@RequestMapping("/sign-up")
+@RequestMapping("/tweets")
 
-public class userController {
+public class tweetController {
+
     @PostMapping
-    public void create(@RequestBody UserDTO req) {
+    public void create(@RequestBody TweetDTO req) {
         System.out.println(req); // TODO:remove system.out
     }
 }

@@ -6,4 +6,5 @@ import com.tweteroo.api.model.Tweet;
 
 public interface TweetRepository extends JpaRepository<Tweet, Long> {
 
+    Tweet findByUsername(String username);
 }

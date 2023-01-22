@@ -22,6 +22,12 @@ public class Tweet {
         this.text = data.tweet();
     }
 
+    public Tweet(TweetDTO data) {
+        this.username = data.username();
+        this.avatar = null;
+        this.text = data.tweet();
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -34,4 +40,8 @@ public class Tweet {
 
     @Column(nullable = false, length = 280)
     private String text;
+
+    public String getUserName() {
+        return this.username;
+    }
 }

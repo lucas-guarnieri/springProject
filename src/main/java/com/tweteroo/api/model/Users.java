@@ -21,6 +21,10 @@ public class Users {
         this.avatar = data.avatar();
     }
 
+    public String getAvatar() {
+        return this.avatar;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

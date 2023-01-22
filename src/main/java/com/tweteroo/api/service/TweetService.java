@@ -1,6 +1,12 @@
 package com.tweteroo.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
 import com.tweteroo.api.dto.TweetDTO;
@@ -21,6 +27,18 @@ public class TweetService {
         String tweetAuthor = new Tweet(data).getUserName();
         String avatar = userRepository.findByUsername(tweetAuthor).getAvatar();
         return repository.save(new Tweet(data, avatar));
+    }
+
+    public Page<Tweet> findAll() {
+        int page = 0;
+        int size = 5;
+        PageRequest pageRequest = PageRequest.of(
+                page,
+                size);
+
+        return new PageImpl<>(repository.findAll(),
+                pageRequest, size);
+
     }
 
 }
